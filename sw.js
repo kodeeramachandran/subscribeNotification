@@ -1,22 +1,9 @@
-self.addEventListener('push', function(event) {
-    if (!(self.Notification && self.Notification.permission === 'granted')) {
-      return;
-    }
-  
-  
-    var title = "Something Has Happened";
-    var message = data.event || "Here's something you might want to check out.";
-    var icon = "images/new-notification.png";
-  
-    var notification = new self.Notification(title, {
-      body: message,
-      tag: 'simple-push-demo-notification',
-      icon: icon
-    });
-  
-    notification.addEventListener('click', function() {
-      if (clients.openWindow) {
-        clients.openWindow('https://example.blog.com/2015/03/04/something-new.html');
-      }
-    });
+self.addEventListener('push', e=>{
+    const data = e.data.json();
+    console.log('Push received...'+data);
+    
+    self.registration.showNotification(data.title, {
+      body:data.body,
+      icon:'http://image.ibb.co/frYOFd/tmlogo.png'
+    })
   });
