@@ -1,8 +1,13 @@
-self.addEventListener('push', e=>{
-   let body ='kodee';
-    
-    self.registration.showNotification('test', {
-      body:body,
-      icon:'http://image.ibb.co/frYOFd/tmlogo.png'
-    })
+self.addEventListener('push', function(event) {
+    console.log('[Service Worker] Push Received.');
+    console.log(`[Service Worker] Push had this data: "${event.data.text()}"`);
+  
+    const title = 'Push Codelab';
+    const options = {
+      body: 'Yay it works.',
+      icon: 'images/icon.png',
+      badge: 'images/badge.png'
+    };
+  
+    event.waitUntil(self.registration.showNotification(title, options));
   });
