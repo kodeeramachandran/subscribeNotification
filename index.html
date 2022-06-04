@@ -9,6 +9,7 @@
 </head>
 <body>
     <button onclick="subscribe()">Subscribe </button>
+    <div id="subscription_id"></div>
     <script>
         addEventListener('load',async () => {
             let sw = await navigator.serviceWorker.register('./sw.js');
@@ -19,7 +20,8 @@
                 userVisibleOnly: true,
                 applicationServerKey: 'BLSmud58LjBWTpQ-YXtzUGWOfHy8qfzYv-aFIYXPcAYnpLbNuaDsSu5R6Tk3JAXpGaGyn9ZWGptIoSnCjaGv7Lc' 
             })
-            console.log(JSON.stringify(push));
+            let idsB = JSON.stringify(push);
+            document.getElementById('subscription_id').text(ids);
         }
     </script>
 </body>
