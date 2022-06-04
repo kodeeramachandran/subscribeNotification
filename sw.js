@@ -1,9 +1,8 @@
 self.addEventListener('push', e=>{
-    const data = e.data.json();
-    console.log('Push received...'+data);
+   let body ='kodee';
     
-    self.registration.showNotification(data.title, {
-      body:data.body,
+    self.registration.showNotification('test', {
+      body:body,
       icon:'http://image.ibb.co/frYOFd/tmlogo.png'
     })
   });
