@@ -3,12 +3,9 @@ self.addEventListener('push', function(event) {
       return;
     }
   
-    var data = {};
-    if (event.data) {
-      data = event.data.json();
-    }
-    var title = data.title || "Something Has Happened";
-    var message = data.message || "Here's something you might want to check out.";
+  
+    var title = "Something Has Happened";
+    var message = data.event || "Here's something you might want to check out.";
     var icon = "images/new-notification.png";
   
     var notification = new self.Notification(title, {
